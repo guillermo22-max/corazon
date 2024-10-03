@@ -1,7 +1,7 @@
 function imprimirCorazonConDelay(array, ms) {
     let i = 0, j = 0;
   
-    function imprimir() {
+    /*function imprimir() {
       if (i < array.length) {
         if (j < array[i].length) {
           process.stdout.write(array[i][j]); 
@@ -16,7 +16,23 @@ function imprimirCorazonConDelay(array, ms) {
       }
     }
   
-    imprimir(); 
+    imprimir();*/
+
+    const interval = setInterval(() => { //se añade setInterval: Esto simplifica el flujo de ejecución al evitar múltiples llamadas anidadas a setTimeout.
+      if (i < array.length) {
+          if (j < array[i].length) {
+              process.stdout.write(array[i][j]);
+              j++;
+          } else {
+              console.log(); 
+              i++;
+              j = 0;
+          }
+      } else {
+          clearInterval(interval); // Limpiar intervalo cuando se ha terminado
+      }
+  }, ms);
+
 }
   
   const asciiHeart = [
